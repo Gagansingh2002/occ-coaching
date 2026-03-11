@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oberoi Coaching Centre (OCC) — Where Concepts Meet Confidence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --fire: #E8601A;
+  --fire2: #FF7B35;
+  --ember: #B84A10;
+  --gold: #F5C518;
+  --gold2: #FFD95A;
+  --cream: #FDF0DC;
+  --brown: #1E0D04;
+  --brown2: #2E160A;
+  --brown3: #3D1F0D;
+  --white: #FFFDF8;
+  --muted: rgba(253,240,220,.55);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--brown);
+  font-family:'DM Sans',sans-serif;
+  color:var(--cream);
+  overflow-x:hidden;
+}
+
+/* ════════════════════════════════
+   CANVAS
+════════════════════════════════ */
+#c{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ════════════════════════════════
+   NAV BAR
+════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+  background:rgba(30,13,4,.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(232,96,26,.2);
+  transition:background .3s;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:.1em;
+  color:var(--white);
+  text-decoration:none;
+}
+.nav-logo span{color:var(--gold);}
+.nav-cta{
+  background:var(--gold);
+  color:var(--brown);
+  font-weight:700;
+  font-size:.75rem;
+  letter-spacing:.06em;
+  padding:9px 18px;
+  border-radius:50px;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,197,24,.45);}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:100px 28px 60px;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* layered gradient bg */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgba(232,96,26,.9) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 20% 110%, rgba(184,74,16,.5) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 80% 110%, rgba(245,197,24,.15) 0%, transparent 60%),
+    var(--brown);
+  z-index:0;
+}
+
+/* grid texture */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:50px 50px;
+  z-index:0;
+}
+
+/* concentric glow rings */
+.rings{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;z-index:1;
+}
+.ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(245,197,24,.12);
+  transform:translate(-50%,-50%);
+  animation:ringPulse 4s ease-in-out infinite;
+}
+.ring:nth-child(1){width:280px;height:280px;animation-delay:0s;}
+.ring:nth-child(2){width:460px;height:460px;animation-delay:.8s;border-color:rgba(232,96,26,.1);}
+.ring:nth-child(3){width:640px;height:640px;animation-delay:1.6s;border-color:rgba(245,197,24,.06);}
+.ring:nth-child(4){width:820px;height:820px;animation-delay:2.4s;border-color:rgba(232,96,26,.04);}
+
+@keyframes ringPulse{
+  0%,100%{opacity:.3;transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:.8;transform:translate(-50%,-50%) scale(1.03);}
+}
+
+.hero-inner{position:relative;z-index:2;}
+
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,197,24,.15);
+  border:1px solid rgba(245,197,24,.35);
+  color:var(--gold);
+  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  padding:7px 18px;border-radius:50px;
+  margin-bottom:24px;
+  animation:slideDown .7s ease both;
+}
+.pill-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--gold);
+  animation:blink 1.4s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+.hero-occ{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1rem,5vw,1.5rem);
+  letter-spacing:.5em;
+  color:var(--fire2);
+  animation:slideDown .7s .1s ease both;
+}
+
+.hero-h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4.5rem,20vw,9rem);
+  line-height:.88;
+  letter-spacing:.03em;
+  color:var(--white);
+  text-shadow:0 0 80px rgba(232,96,26,.4), 0 4px 40px rgba(0,0,0,.5);
+  animation:slideDown .8s .15s ease both;
+}
+.hero-h1 em{
+  font-style:normal;
+  color:var(--gold);
+  display:block;
+  -webkit-text-stroke:2px var(--gold);
+  text-shadow:0 0 60px rgba(245,197,24,.5);
+}
+
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(1.1rem,3.5vw,1.55rem);
+  color:rgba(253,240,220,.8);
+  margin-top:16px;letter-spacing:.03em;
+  animation:slideDown .8s .25s ease both;
+}
+
+.hero-btns{
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+  margin-top:36px;
+  animation:slideDown .8s .38s ease both;
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 30px;border-radius:50px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;
+  cursor:pointer;border:none;text-decoration:none;
+  transition:all .25s;
+}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--brown);
+  box-shadow:0 8px 28px rgba(245,197,24,.4);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,197,24,.6);}
+.btn-ghost{
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.3);
+  color:var(--white);
+  backdrop-filter:blur(6px);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.6);}
+
+.hero-scroll{
+  margin-top:56px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(253,240,220,.35);
+  animation:slideDown .8s .5s ease both;
+}
+.scroll-line{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(245,197,24,.6),transparent);
+  animation:scrollAnim 2s ease-in-out infinite;
+}
+@keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:.6;}50%{transform:scaleY(.5);opacity:1;}}
+
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ════════════════════════════════
+   TICKER
+════════════════════════════════ */
+.ticker-bar{
+  position:relative;z-index:1;
+  background:linear-gradient(90deg,var(--ember),var(--fire),var(--fire2),var(--fire));
+  padding:11px 0;overflow:hidden;
+}
+.ticker-inner{
+  display:flex;white-space:nowrap;
+  animation:scroll 22s linear infinite;
+}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.95);padding:0 30px;
+}
+.ticker-sep{color:var(--gold2);font-size:1.1rem;}
+@keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ════════════════════════════════
+   SECTIONS
+════════════════════════════════ */
+section{position:relative;z-index:1;padding:80px 24px;}
+.wrap{max-width:720px;margin:0 auto;}
+
+.s-label{
+  font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;
+}
+.s-label::before{content:'';width:24px;height:1px;background:var(--gold);}
+
+.s-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.8rem,10vw,5rem);
+  letter-spacing:.05em;line-height:.95;
+  color:var(--white);margin-bottom:10px;
+}
+
+.s-sub{
+  font-size:.95rem;color:var(--muted);line-height:1.6;margin-bottom:36px;
+}
+
+/* ── reveal ── */
+[data-r]{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease;}
+[data-r].on{opacity:1;transform:none;}
+[data-r="l"]{transform:translateX(-30px);}
+[data-r="l"].on{transform:none;}
+[data-r="s"]{transform:scale(.93);}
+[data-r="s"].on{transform:none;}
+
+/* ════════════════════════════════
+   ABOUT STRIP
+════════════════════════════════ */
+.about-section{
+  background:linear-gradient(180deg,var(--brown) 0%,var(--brown2) 100%);
+}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.about-tile{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;padding:24px 20px;
+  transition:all .3s;
+}
+.about-tile:hover{background:rgba(232,96,26,.1);border-color:rgba(232,96,26,.3);transform:translateY(-3px);}
+.about-tile-icon{font-size:2rem;margin-bottom:10px;}
+.about-tile-val{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;letter-spacing:.04em;color:var(--gold);line-height:1;
+}
+.about-tile-label{font-size:.8rem;color:var(--muted);margin-top:4px;font-weight:500;}
+
+/* ════════════════════════════════
+   SUBJECTS
+════════════════════════════════ */
+.subjects-section{background:var(--brown2);}
+
+.subject-cards{display:flex;flex-direction:column;gap:18px;}
+
+.subject-card{
+  background:linear-gradient(135deg,rgba(232,96,26,.12),rgba(232,96,26,.03));
+  border:1px solid rgba(232,96,26,.25);
+  border-radius:20px;padding:28px 26px;
+  display:flex;align-items:flex-start;gap:20px;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.subject-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(245,197,24,.06),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.subject-card:hover{border-color:var(--fire);transform:translateX(6px);}
+.subject-card:hover::after{opacity:1;}
+
+.sc-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.5rem;line-height:1;
+  color:rgba(232,96,26,.25);
+  letter-spacing:.04em;
+  flex-shrink:0;
+}
+.sc-body{}
+.sc-class{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;letter-spacing:.04em;
+  color:var(--white);line-height:1;
+}
+.sc-subjects{
+  font-size:.88rem;font-weight:500;color:var(--fire2);margin-top:4px;
+}
+.sc-board{
+  display:inline-block;
+  background:rgba(245,197,24,.15);
+  border:1px solid rgba(245,197,24,.3);
+  color:var(--gold);
+  font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 12px;border-radius:50px;margin-top:10px;
+}
+.sc-desc{font-size:.82rem;color:var(--muted);margin-top:8px;line-height:1.5;}
+
+/* ════════════════════════════════
+   FEATURES
+════════════════════════════════ */
+.features-section{
+  background:linear-gradient(180deg,var(--brown2),var(--brown3));
+}
+
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+.feat-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;padding:22px 18px 20px;
+  position:relative;overflow:hidden;
+  transition:all .3s;
+}
+.feat-card::before{
+  content:'';position:absolute;
+  top:-30px;right:-30px;
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,96,26,.2),transparent 70%);
+  transition:all .4s;
+}
+.feat-card:hover{
+  background:rgba(232,96,26,.1);
+  border-color:rgba(232,96,26,.35);
+  transform:translateY(-4px);
+}
+.feat-card:hover::before{transform:scale(2.5);}
+
+.feat-icon{
+  font-size:1.9rem;margin-bottom:12px;
+  display:block;
+  transition:transform .3s;
+}
+.feat-card:hover .feat-icon{transform:scale(1.15) rotate(-5deg);}
+
+.feat-title{font-weight:600;font-size:.92rem;color:var(--white);line-height:1.3;margin-bottom:5px;}
+.feat-desc{font-size:.77rem;color:var(--muted);line-height:1.45;}
+
+/* ════════════════════════════════
+   PROCESS / HOW IT WORKS
+════════════════════════════════ */
+.process-section{background:var(--brown3);}
+
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:24px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;
+}
+.step:last-child{border-bottom:none;}
+.step-line{
+  position:absolute;left:19px;top:56px;
+  width:2px;height:calc(100% - 32px);
+  background:linear-gradient(to bottom,var(--fire),transparent);
+}
+.step:last-child .step-line{display:none;}
+
+.step-num{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--fire),var(--ember));
+  display:grid;place-items:center;flex-shrink:0;
+  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
+  color:var(--white);
+  box-shadow:0 4px 16px rgba(232,96,26,.4);
+  z-index:1;
+}
+
+.step-title{font-weight:600;font-size:.95rem;color:var(--white);margin-bottom:4px;}
+.step-desc{font-size:.82rem;color:var(--muted);line-height:1.5;}
+
+/* ════════════════════════════════
+   STATS BAR
+════════════════════════════════ */
+.stats-bar{
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,var(--ember) 0%,var(--fire) 50%,var(--fire2) 100%);
+  padding:50px 24px;overflow:hidden;
+}
+.stats-bar::before{
+  content:'OCC';
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:'Bebas Neue',sans-serif;font-size:14rem;
+  color:rgba(255,255,255,.05);line-height:1;pointer-events:none;
+  letter-spacing:.05em;
+}
+.stats-row{
+  max-width:720px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.stat-box{text-align:center;}
+.stat-n{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.8rem,9vw,4.5rem);
+  color:var(--white);line-height:1;
+  text-shadow:0 2px 20px rgba(0,0,0,.3);
+}
+.stat-l{
+  font-size:.68rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.7);
+  margin-top:4px;
+}
+
+/* ════════════════════════════════
+   TESTIMONIAL / QUOTE
+════════════════════════════════ */
+.quote-section{
+  background:var(--brown);text-align:center;
+  padding:70px 24px;
+}
+.quote-card{
+  background:linear-gradient(135deg,rgba(232,96,26,.15),rgba(245,197,24,.05));
+  border:1px solid rgba(232,96,26,.3);
+  border-radius:24px;padding:44px 32px;
+  position:relative;overflow:hidden;
+  max-width:640px;margin:0 auto;
+}
+.quote-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:10rem;line-height:.5;
+  color:rgba(232,96,26,.2);
+  position:absolute;top:20px;left:24px;
+  pointer-events:none;
+}
+.quote-text{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(1.15rem,4vw,1.55rem);
+  color:var(--white);line-height:1.6;
+  position:relative;z-index:1;margin-bottom:20px;
+}
+.quote-author{
+  font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ════════════════════════════════
+   DEMO OFFER
+════════════════════════════════ */
+.demo-section{background:var(--brown2);text-align:center;}
+.demo-card{
+  background:linear-gradient(135deg,var(--ember),var(--fire),var(--fire2));
+  border-radius:28px;padding:50px 32px;
+  position:relative;overflow:hidden;
+  max-width:640px;margin:0 auto;
+}
+.demo-card::before{
+  content:'FREE';
+  position:absolute;
+  bottom:-40px;right:-20px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:12rem;letter-spacing:.04em;
+  color:rgba(255,255,255,.07);
+  line-height:1;pointer-events:none;
+}
+.demo-badge{
+  display:inline-block;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.3);
+  color:var(--white);
+  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  padding:6px 16px;border-radius:50px;margin-bottom:16px;
+}
+.demo-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,10vw,4.2rem);
+  letter-spacing:.04em;color:var(--white);line-height:1;
+  margin-bottom:10px;
+}
+.demo-sub{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:28px;}
+.demo-bullets{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  margin-bottom:28px;
+}
+.demo-bullet{
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50px;
+  font-size:.75rem;font-weight:500;
+  color:var(--white);padding:6px 14px;
+}
+
+/* ════════════════════════════════
+   SCHEDULE / TIMINGS
+════════════════════════════════ */
+.schedule-section{background:var(--brown3);}
+
+.schedule-table{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:20px;
+  overflow:hidden;
+}
+.sch-row{
+  display:flex;align-items:center;
+  padding:18px 22px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  transition:background .2s;
+}
+.sch-row:last-child{border-bottom:none;}
+.sch-row:hover{background:rgba(232,96,26,.08);}
+
+.sch-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--fire);flex-shrink:0;margin-right:16px;
+  box-shadow:0 0 8px rgba(232,96,26,.6);
+}
+.sch-batch{
+  font-weight:600;font-size:.9rem;color:var(--white);flex:1;
+}
+.sch-time{
+  font-size:.82rem;color:var(--gold);font-weight:500;
+}
+.sch-tag{
+  background:rgba(232,96,26,.2);
+  border:1px solid rgba(232,96,26,.35);
+  color:var(--fire2);
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 10px;border-radius:50px;margin-left:10px;
+}
+
+/* ════════════════════════════════
+   MAP + CONTACT
+════════════════════════════════ */
+.contact-section{background:var(--brown);}
+
+.contact-layout{display:flex;flex-direction:column;gap:20px;}
+
+.map-container{
+  border-radius:20px;overflow:hidden;
+  border:1px solid rgba(232,96,26,.25);
+  height:300px;position:relative;
+}
+.map-container iframe{
+  width:100%;height:100%;border:none;
+  filter:saturate(.8) contrast(1.1);
+}
+.map-overlay-badge{
+  position:absolute;top:12px;left:12px;
+  background:var(--brown);
+  border:1px solid rgba(232,96,26,.4);
+  border-radius:12px;padding:8px 14px;
+  display:flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:600;color:var(--white);
+  pointer-events:none;z-index:1;
+  backdrop-filter:blur(8px);
+}
+
+.contact-details{display:flex;flex-direction:column;gap:14px;}
+
+.c-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:20px;
+  display:flex;align-items:center;gap:16px;
+  transition:all .3s;
+  text-decoration:none;
+}
+.c-card:hover{
+  background:rgba(232,96,26,.12);
+  border-color:rgba(232,96,26,.35);
+  transform:translateX(4px);
+}
+
+.c-icon{
+  width:46px;height:46px;
+  background:linear-gradient(135deg,var(--fire),var(--ember));
+  border-radius:13px;
+  display:grid;place-items:center;
+  font-size:1.3rem;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(232,96,26,.35);
+}
+
+.c-lbl{
+  font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:3px;
+}
+.c-val{font-size:.95rem;font-weight:500;color:var(--white);line-height:1.4;}
+
+/* ════════════════════════════════
+   FAQ
+════════════════════════════════ */
+.faq-section{background:var(--brown2);}
+
+.faq-item{
+  border-bottom:1px solid rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;
+  cursor:pointer;
+  font-weight:500;font-size:.95rem;color:var(--white);
+  user-select:none;
+  gap:16px;
+}
+.faq-arrow{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(232,96,26,.2);
+  display:grid;place-items:center;flex-shrink:0;
+  font-size:.8rem;
+  transition:transform .35s,background .3s;
+}
+.faq-item.open .faq-arrow{transform:rotate(45deg);background:var(--fire);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s ease,padding .45s ease;
+  font-size:.85rem;color:var(--muted);line-height:1.6;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px;}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer{
+  background:var(--brown);
+  border-top:1px solid rgba(232,96,26,.2);
+  padding:32px 24px;text-align:center;
+  position:relative;z-index:1;
+}
+.footer-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;letter-spacing:.1em;
+  color:var(--white);margin-bottom:8px;
+}
+.footer-logo span{color:var(--gold);}
+.footer-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1rem;color:var(--muted);margin-bottom:18px;
+}
+.footer-links{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px;
+  margin-bottom:20px;
+}
+.footer-chip{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50px;
+  font-size:.7rem;font-weight:500;color:var(--muted);
+  padding:5px 14px;
+}
+.footer-bottom{font-size:.72rem;color:rgba(253,240,220,.25);letter-spacing:.06em;}
+
+/* ════════════════════════════════
+   FAB
+════════════════════════════════ */
+.fab{
+  position:fixed;bottom:22px;right:20px;z-index:300;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--brown);
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:13px 20px;border-radius:50px;border:none;cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;align-items:center;gap:7px;
+  box-shadow:0 8px 28px rgba(245,197,24,.5);
+  animation:fabIn .5s 1.2s ease both, glowPulse 2.5s 2s ease-in-out infinite;
+}
+@keyframes fabIn{from{opacity:0;transform:scale(.4)translateY(20px);}to{opacity:1;transform:scale(1)translateY(0);}}
+@keyframes glowPulse{0%,100%{box-shadow:0 8px 28px rgba(245,197,24,.5);}50%{box-shadow:0 12px 44px rgba(245,197,24,.85);}}
+.fab:hover{transform:translateY(-3px) scale(1.03);}
+
+/* ════════════════════════════════
+   RESPONSIVE TWEAKS
+════════════════════════════════ */
+@media(max-width:400px){
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .feat-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><span>OCC</span> · Oberoi</a>
+  <a href="tel:9354721806" class="nav-cta">📞 Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-pill"><span class="pill-dot"></span>New Delhi · Est. 2011</div>
+    <div class="hero-occ">O · C · C</div>
+    <h1 class="hero-h1">OBEROI<em>COACHING</em>CENTRE</h1>
+    <p class="hero-tagline">"Where Concepts Meet Confidence"</p>
+    <div class="hero-btns">
+      <a href="tel:9354721806" class="btn btn-gold">📞 Call: 9354721806</a>
+      <a href="#subjects" class="btn btn-ghost">Explore Courses ↓</a>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <span class="ticker-item">🌙 Evening Batches Available <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">🎓 Free Demo Class — No Fees <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📚 CBSE Class IX, X, XI & XII <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">🏆 14 Years of Excellence <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">👥 Maximum 8-10 Students Per Batch <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📍 Tagore Garden, New Delhi <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📞 9354721806 · 8826857110 <span class="ticker-sep">✦</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">🌙 Evening Batches Available <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">🎓 Free Demo Class — No Fees <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📚 CBSE Class IX, X, XI & XII <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">🏆 14+ Years of Excellence <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">👥 Maximum 8 Students Per Batch <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📍 Tagore Garden, New Delhi <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">📞 9354721806 · 8826857110 <span class="ticker-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="wrap">
+    <p class="s-label" data-r>About OCC</p>
+    <h2 class="s-title" data-r>Excellence<br>By Numbers</h2>
+    <p class="s-sub" data-r>Founded with a vision to transform how students understand Mathematics and Science, OCC delivers personalised, small-batch coaching that builds lasting academic foundations.</p>
+
+    <div class="about-grid">
+      <div class="about-tile" data-r style="transition-delay:.05s">
+        <div class="about-tile-icon">🏆</div>
+        <div class="about-tile-val" data-count="14">0</div>
+        <div class="about-tile-label">Years of Teaching Excellence</div>
+      </div>
+      <div class="about-tile" data-r style="transition-delay:.1s">
+        <div class="about-tile-icon">👥</div>
+        <div class="about-tile-val">8-10</div>
+        <div class="about-tile-label">Max Students Per Batch</div>
+      </div>
+      <div class="about-tile" data-r style="transition-delay:.15s">
+        <div class="about-tile-icon">📖</div>
+        <div class="about-tile-val">4</div>
+        <div class="about-tile-label">Classes Covered (IX–XII)</div>
+      </div>
+      <div class="about-tile" data-r style="transition-delay:.2s">
+        <div class="about-tile-icon">⭐</div>
+        <div class="about-tile-val">100%</div>
+        <div class="about-tile-label">Personal Attention Guaranteed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="subjects-section" id="subjects">
+  <div class="wrap">
+    <p class="s-label" data-r>Curriculum</p>
+    <h2 class="s-title" data-r>Subjects<br>Offered</h2>
+    <p class="s-sub" data-r>Structured courses aligned with CBSE curriculum — from foundational concepts to board exam mastery.</p>
+
+    <div class="subject-cards">
+      <div class="subject-card" data-r="l">
+        <div class="sc-num">01</div>
+        <div class="sc-body">
+          <div class="sc-class">Class IX & X</div>
+          <div class="sc-subjects">Mathematics + Science</div>
+          <div class="sc-board">CBSE Curriculum</div>
+          <div class="sc-desc">Build rock-solid foundations in Algebra, Geometry, Physics, Chemistry & Biology. Comprehensive NCERT coverage with weekly assessments to track progress.</div>
+        </div>
+      </div>
+
+      <div class="subject-card" data-r="l" style="transition-delay:.12s">
+        <div class="sc-num">02</div>
+        <div class="sc-body">
+          <div class="sc-class">Class XI & XII</div>
+          <div class="sc-subjects">Mathematics (Advanced)</div>
+          <div class="sc-board">CBSE · Board Focused</div>
+          <div class="sc-desc">Deep-dive into Calculus, Vectors, Probability, Matrices & more. Intensive board prep with previous year papers and targeted doubt clearance sessions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-n" data-count="14">0+</div>
+      <div class="stat-l">Yrs Experience</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">≤10</div>
+      <div class="stat-l">Batch Size</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n" data-count="500">0+</div>
+      <div class="stat-l">Students Taught</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">A+</div>
+      <div class="stat-l">Result Rate</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-section" id="why">
+  <div class="wrap">
+    <p class="s-label" data-r>Our Edge</p>
+    <h2 class="s-title" data-r>Why Choose<br>OCC?</h2>
+    <p class="s-sub" data-r>We don't just teach — we transform. Every element of our programme is designed for one goal: your child's success.</p>
+
+    <div class="feat-grid">
+      <div class="feat-card" data-r style="transition-delay:.04s">
+        <span class="feat-icon">🧠</span>
+        <div class="feat-title">Conceptual Clarity First</div>
+        <div class="feat-desc">We go beyond rote learning — students truly understand the "why" behind every concept.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.08s">
+        <span class="feat-icon">👤</span>
+        <div class="feat-title">One-on-One Doubt Sessions</div>
+        <div class="feat-desc">Dedicated personal sessions so no doubt ever holds a student back.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.12s">
+        <span class="feat-icon">📝</span>
+        <div class="feat-title">Regular Assignments</div>
+        <div class="feat-desc">Structured homework aligned with NCERT + additional practice sets every week.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.16s">
+        <span class="feat-icon">🧪</span>
+        <div class="feat-title">Weekly Tests</div>
+        <div class="feat-desc">Regular mock tests to simulate exam conditions and build confidence under pressure.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.2s">
+        <span class="feat-icon">📊</span>
+        <div class="feat-title">Progress Tracking</div>
+        <div class="feat-desc">Detailed performance reports shared with parents — full transparency, always.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.24s">
+        <span class="feat-icon">💸</span>
+        <div class="feat-title">Affordable Monthly Fees</div>
+        <div class="feat-desc">Transparent fee structure with no hidden costs. Quality education, accessible price.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.28s">
+        <span class="feat-icon">📚</span>
+        <div class="feat-title">NCERT Mastery</div>
+        <div class="feat-desc">Complete NCERT textbook coverage — the backbone of CBSE board exam success.</div>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.32s">
+        <span class="feat-icon">🌙</span>
+        <div class="feat-title">Evening Batches</div>
+        <div class="feat-desc">Convenient timings after school hours — no clash with regular school schedule.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="wrap">
+    <p class="s-label" data-r>How It Works</p>
+    <h2 class="s-title" data-r>Join OCC<br>in 4 Steps</h2>
+
+    <div class="steps">
+      <div class="step" data-r="l">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+        <div>
+          <div class="step-title">Book a Free Demo Class</div>
+          <div class="step-desc">Call us or WhatsApp to schedule your no-obligation free demo. No fees, no pressure — just experience the OCC difference.</div>
+        </div>
+      </div>
+      <div class="step" data-r="l" style="transition-delay:.1s">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+        <div>
+          <div class="step-title">Assessment & Batch Placement</div>
+          <div class="step-desc">We assess the student's current level to place them in the right batch for maximum growth and peer learning.</div>
+        </div>
+      </div>
+      <div class="step" data-r="l" style="transition-delay:.2s">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+        <div>
+          <div class="step-title">Enroll & Begin Learning</div>
+          <div class="step-desc">Simple enrollment process with a transparent monthly fee. Start your first class within days.</div>
+        </div>
+      </div>
+      <div class="step" data-r="l" style="transition-delay:.3s">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Track, Test & Excel</div>
+          <div class="step-desc">Weekly tests, progress reports and regular parent communication ensure every student thrives.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div class="wrap">
+    <p class="s-label" data-r>Timings</p>
+    <h2 class="s-title" data-r>Batch<br>Schedule</h2>
+    <p class="s-sub" data-r>Evening batches designed to fit seamlessly around school hours.</p>
+
+    <div class="schedule-table" data-r>
+      <div class="sch-row">
+        <div class="sch-dot"></div>
+        <div class="sch-batch">Class IX & X — Maths & Science</div>
+        <div class="sch-time">5:00 PM – 6:30 PM</div>
+        <div class="sch-tag">Mon–Sat</div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-dot"></div>
+        <div class="sch-batch">Class XI & XII — Mathematics</div>
+        <div class="sch-time">6:30 PM – 8:00 PM</div>
+        <div class="sch-tag">Mon–Sat</div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-dot" style="background:var(--gold);box-shadow:0 0 8px rgba(245,197,24,.6)"></div>
+        <div class="sch-batch">Weekend Doubt Sessions</div>
+        <div class="sch-time">10:00 AM – 12:00 PM</div>
+        <div class="sch-tag" style="background:rgba(245,197,24,.15);border-color:rgba(245,197,24,.3);color:var(--gold)">Sat–Sun</div>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:12px;text-align:center;">* Exact timings confirmed on enrollment. Custom slots available on request.</p>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div data-r="s">
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">Small batches aren't a limitation — they're a superpower. When a teacher truly knows every student, transformation becomes inevitable.</p>
+      <div class="quote-author">— Oberoi Coaching Centre Philosophy</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <p class="s-label" data-r>Common Questions</p>
+    <h2 class="s-title" data-r>FAQs</h2>
+
+    <div data-r>
+      <div class="faq-item">
+        <div class="faq-q">Is the demo class really free? <div class="faq-arrow">+</div></div>
+        <div class="faq-a">Yes — completely free, no strings attached. Come, experience the teaching style, ask questions, and then decide. We're confident you'll love it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the fee structure? <div class="faq-arrow">+</div></div>
+        <div class="faq-a">We follow a simple monthly fee model. Fees vary by class and subject. Please call 9354721806 for the current fee structure — we keep it affordable and transparent.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why only 8 students per batch? <div class="faq-arrow">+</div></div>
+        <div class="faq-a">Small batches ensure every student gets individual attention. The teacher knows each student's strengths and weaknesses, and can address doubts in real-time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you only cover CBSE? <div class="faq-arrow">+</div></div>
+        <div class="faq-a">Currently, yes — all classes follow the CBSE curriculum with a strong focus on NCERT mastery, which is the foundation for board exams.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are parents updated on progress? <div class="faq-arrow">+</div></div>
+        <div class="faq-a">Absolutely. We share regular progress reports and maintain open communication with parents. Transparency is one of our core values.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO OFFER -->
+<section class="demo-section" id="enroll">
+  <div class="wrap">
+    <div class="demo-card" data-r="s">
+      <div class="demo-badge">🎓 Limited Seats Available</div>
+      <div class="demo-title">FREE DEMO<br>CLASS AWAITS</div>
+      <p class="demo-sub">No fees. No commitment. Just an hour that could change your child's academic journey forever.</p>
+      <div class="demo-bullets">
+        <span class="demo-bullet">✓ Zero Cost</span>
+        <span class="demo-bullet">✓ No Obligation</span>
+        <span class="demo-bullet">✓ Instant Booking</span>
+        <span class="demo-bullet">✓ Evening Slots</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <a href="tel:9354721806" class="btn" style="background:rgba(255,255,255,.95);color:#1E0D04;font-weight:700;">📞 9354721806</a>
+        <a href="tel:8826857110" class="btn" style="background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:600;backdrop-filter:blur(6px);">📞 8826857110</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT + MAP -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <p class="s-label" data-r>Find Us</p>
+    <h2 class="s-title" data-r>Contact &<br>Location</h2>
+
+    <div class="contact-layout" data-r>
+      <!-- Google Map -->
+      <div class="map-container">
+        <div class="map-overlay-badge">📍 OCC — Tagore Garden</div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.3774!2d77.1174!3d28.6527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03c00000001%3A0x1!2sTagore+Garden+Extension%2C+New+Delhi%2C+Delhi+110027!5e0!3m2!1sen!2sin!4v1234567890"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="OCC Location Map">
+        </iframe>
+      </div>
+
+      <!-- Contact Cards -->
+      <div class="contact-details">
+        <a href="https://maps.google.com/?q=D-464+Tagore+Garden+Extension+New+Delhi+110027" target="_blank" class="c-card">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-lbl">Address</div>
+            <div class="c-val">D-464, Tagore Garden Extn,<br>3rd Floor, New Delhi – 110027</div>
+          </div>
+        </a>
+
+        <a href="tel:9354721806" class="c-card">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-lbl">Primary Phone</div>
+            <div class="c-val">9354721806</div>
+          </div>
+        </a>
+
+        <a href="tel:8826857110" class="c-card">
+          <div class="c-icon">📱</div>
+          <div>
+            <div class="c-lbl">Alternate Phone</div>
+            <div class="c-val">8826857110</div>
+          </div>
+        </a>
+
+        <div class="c-card" style="cursor:default;">
+          <div class="c-icon">🌙</div>
+          <div>
+            <div class="c-lbl">Batch Timing</div>
+            <div class="c-val">Evening Batches — Mon to Sat</div>
+          </div>
+        </div>
+
+        <div class="c-card" style="cursor:default;">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-lbl">Floor</div>
+            <div class="c-val">3rd Floor · Near Tagore Garden Metro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>OCC</span> · Oberoi Coaching Centre</div>
+  <div class="footer-tagline">"Where Concepts Meet Confidence"</div>
+  <div class="footer-links">
+    <span class="footer-chip">Class IX & X · Maths & Science</span>
+    <span class="footer-chip">Class XI & XII · Mathematics</span>
+    <span class="footer-chip">CBSE Curriculum</span>
+    <span class="footer-chip">Tagore Garden, Delhi</span>
+    <span class="footer-chip">Evening Batches</span>
+    <span class="footer-chip">Free Demo Class</span>
+  </div>
+  <div class="footer-bottom">© 2025 Oberoi Coaching Centre · D-464 Tagore Garden Extn · New Delhi 110027<br>Join the Journey to Academic Excellence ✦</div>
+</footer>
+
+<!-- FLOATING BUTTON -->
+<a href="tel:9354721806" class="fab">📞 Enroll Free</a>
+
+<!-- ═══════════ JS ═══════════ -->
+<script>
+/* ── Particle Canvas ── */
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H, pts = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Pt {
+  constructor() { this.reset(true); }
+  reset(rand) {
+    this.x = Math.random() * W;
+    this.y = rand ? Math.random() * H : H + 10;
+    this.r = Math.random() * 1.4 + .3;
+    this.vx = (Math.random() - .5) * .35;
+    this.vy = -(Math.random() * .6 + .15);
+    this.life = 1;
+    this.decay = Math.random() * .005 + .0012;
+    this.hue = 30 + Math.random() * 25; // warm amber
+  }
+  tick() {
+    this.x += this.vx; this.y += this.vy; this.life -= this.decay;
+    if (this.life <= 0 || this.y < -10) this.reset(false);
+  }
+  draw() {
+    ctx.save();
+    ctx.globalAlpha = this.life * .22;
+    ctx.fillStyle = `hsl(${this.hue},90%,65%)`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < 100; i++) pts.push(new Pt());
+
+(function loop() {
+  ctx.clearRect(0, 0, W, H);
+  pts.forEach(p => { p.tick(); p.draw(); });
+  requestAnimationFrame(loop);
+})();
+
+/* ── Scroll Reveal ── */
+const revEls = document.querySelectorAll('[data-r]');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revEls.forEach(el => ro.observe(el));
+
+/* ── Counter ── */
+const counters = document.querySelectorAll('[data-count]');
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.count;
+    let cur = 0, start = null;
+    const dur = 1400;
+    function frame(ts) {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      cur = Math.round(eased * target);
+      const suffix = el.dataset.count == 14 ? '+' : el.dataset.count == 500 ? '+' : '';
+      el.textContent = cur + suffix;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    co.unobserve(el);
+  });
+}, { threshold: .5 });
+counters.forEach(el => co.observe(el));
+
+/* ── FAQ accordion ── */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── Nav scroll style ── */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background =
+    window.scrollY > 50 ? 'rgba(30,13,4,.97)' : 'rgba(30,13,4,.85)';
+});
+</script>
+</body>
+</html>
